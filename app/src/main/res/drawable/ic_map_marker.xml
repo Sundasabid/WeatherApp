@@ -1,0 +1,16 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="40dp" android:height="40dp"
+    android:viewportWidth="40" android:viewportHeight="40">
+    <!-- Drop shadow circle -->
+    <path
+        android:fillColor="#334DA6FF"
+        android:pathData="M20,38 C20,38 8,24 8,16 C8,9.37 13.37,4 20,4 C26.63,4 32,9.37 32,16 C32,24 20,38 20,38Z"/>
+    <!-- Main pin body -->
+    <path
+        android:fillColor="#4DA6FF"
+        android:pathData="M20,36 C20,36 9,23 9,16 C9,9.92 13.92,5 20,5 C26.08,5 31,9.92 31,16 C31,23 20,36 20,36Z"/>
+    <!-- White center dot -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M20,20 C17.79,20 16,18.21 16,16 C16,13.79 17.79,12 20,12 C22.21,12 24,13.79 24,16 C24,18.21 22.21,20 20,20Z"/>
+</vector>

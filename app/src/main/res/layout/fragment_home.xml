@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_dark">
+
+    <!-- ── HEADER ── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="22dp"
+        android:paddingEnd="22dp"
+        android:paddingTop="52dp"
+        android:paddingBottom="14dp">
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical">
+            <TextView android:id="@+id/tvGreeting"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Good Morning," android:textColor="@color/text_secondary"
+                android:textSize="13sp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="WeatherScope" android:textColor="@color/text_primary"
+                android:textSize="22sp" android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/btnNotif"
+            android:layout_width="40dp" android:layout_height="40dp"
+            android:background="@drawable/icon_circle_bg" android:gravity="center"
+            android:clickable="true" android:focusable="true">
+            <ImageView android:layout_width="20dp" android:layout_height="20dp"
+                android:src="@drawable/ic_bell" android:contentDescription="Notifications"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ── SEARCH BAR ── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/search_bg"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="6dp"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp">
+
+        <ImageView android:layout_width="18dp" android:layout_height="18dp"
+            android:src="@drawable/ic_search" android:contentDescription="Search"/>
+
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/search_hint"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLines="1"
+            android:layout_marginStart="10dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"/>
+
+        <ImageView android:id="@+id/ivSearchClear"
+            android:layout_width="18dp" android:layout_height="18dp"
+            android:src="@drawable/ic_close" android:contentDescription="Clear"
+            android:visibility="gone" android:clickable="true" android:focusable="true"/>
+    </LinearLayout>
+
+    <!-- ── SEARCH RESULTS (hidden by default) ── -->
+    <LinearLayout
+        android:id="@+id/searchResultsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/card_bg"
+        android:visibility="gone"/>
+
+    <!-- ── SCROLLABLE CONTENT ── -->
+    <ScrollView
+        android:id="@+id/mainScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
+
+            <!-- ── HERO WEATHER CARD ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/temp_hero_bg"
+                android:layout_marginStart="22dp"
+                android:layout_marginEnd="22dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:padding="20dp">
+
+                <!-- Location + Date row -->
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:gravity="center_vertical" android:layout_marginBottom="12dp">
+
+                    <ImageView android:layout_width="13dp" android:layout_height="13dp"
+                        android:src="@drawable/ic_location" android:contentDescription="loc"/>
+                    <TextView android:id="@+id/tvHeroCity"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="Tap map to start"
+                        android:textColor="@color/accent_blue" android:textSize="12sp"
+                        android:layout_marginStart="5dp"/>
+                    <TextView android:id="@+id/tvHeroDate"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:textColor="@color/text_secondary" android:textSize="11sp"/>
+                </LinearLayout>
+
+                <!-- Temp + Icon -->
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:id="@+id/tvHeroTemp"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="--°" android:textColor="@color/text_primary"
+                            android:textSize="68sp" android:textStyle="bold"
+                            android:lineSpacingExtra="-4dp"/>
+                        <TextView android:id="@+id/tvHeroDesc"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Open map to explore"
+                            android:textColor="@color/accent_yellow" android:textSize="14sp"
+                            android:textStyle="bold"/>
+                        <TextView android:id="@+id/tvHeroFeels"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:textColor="@color/text_secondary" android:textSize="12sp"
+                            android:layout_marginTop="2dp"/>
+                    </LinearLayout>
+
+                    <ImageView android:id="@+id/ivHeroIcon"
+                        android:layout_width="80dp" android:layout_height="80dp"
+                        android:src="@drawable/ic_sunny" android:contentDescription="icon"/>
+                </LinearLayout>
+
+                <!-- Mini stats -->
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:layout_marginTop="16dp">
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:gravity="center"
+                        android:background="@drawable/mini_stat_bg" android:padding="10dp"
+                        android:layout_marginEnd="5dp">
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp"
+                            android:src="@drawable/ic_humidity" android:contentDescription="H"/>
+                        <TextView android:id="@+id/tvMiniHumidity"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="--%"  android:textColor="@color/text_primary"
+                            android:textSize="13sp" android:textStyle="bold" android:layout_marginTop="3dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Humidity" android:textColor="@color/text_secondary"
+                            android:textSize="9sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:gravity="center"
+                        android:background="@drawable/mini_stat_bg" android:padding="10dp"
+                        android:layout_marginEnd="5dp">
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp"
+                            android:src="@drawable/ic_wind" android:contentDescription="W"/>
+                        <TextView android:id="@+id/tvMiniWind"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="-- m/s" android:textColor="@color/text_primary"
+                            android:textSize="13sp" android:textStyle="bold" android:layout_marginTop="3dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Wind" android:textColor="@color/text_secondary"
+                            android:textSize="9sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:gravity="center"
+                        android:background="@drawable/mini_stat_bg" android:padding="10dp">
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp"
+                            android:src="@drawable/ic_visibility" android:contentDescription="V"/>
+                        <TextView android:id="@+id/tvMiniVis"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="-- km" android:textColor="@color/text_primary"
+                            android:textSize="13sp" android:textStyle="bold" android:layout_marginTop="3dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Visibility" android:textColor="@color/text_secondary"
+                            android:textSize="9sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ── 7-DAY FORECAST SECTION ── -->
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginStart="22dp" android:layout_marginEnd="22dp"
+                android:layout_marginBottom="10dp">
+                <ImageView android:layout_width="16dp" android:layout_height="16dp"
+                    android:src="@drawable/ic_forecast" android:contentDescription="Forecast"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:text="7-DAY FORECAST"
+                    android:textColor="@color/label_color" android:textSize="11sp"
+                    android:letterSpacing="0.1" android:layout_marginStart="6dp"/>
+            </LinearLayout>
+
+            <!-- Forecast horizontal scroll -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:layout_marginBottom="16dp"
+                android:paddingStart="22dp"
+                android:paddingEnd="22dp"
+                android:clipToPadding="false">
+
+                <LinearLayout
+                    android:id="@+id/forecastContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"/>
+            </HorizontalScrollView>
+
+            <!-- ── FAVOURITES SECTION ── -->
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginStart="22dp" android:layout_marginEnd="22dp"
+                android:layout_marginBottom="10dp">
+                <ImageView android:layout_width="16dp" android:layout_height="16dp"
+                    android:src="@drawable/ic_star" android:contentDescription="Fav"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:text="FAVOURITES"
+                    android:textColor="@color/label_color" android:textSize="11sp"
+                    android:letterSpacing="0.1" android:layout_marginStart="6dp"/>
+            </LinearLayout>
+
+            <!-- Favourites list container -->
+            <LinearLayout
+                android:id="@+id/favouritesContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="22dp"
+                android:layout_marginEnd="22dp"/>
+
+            <!-- No favourites hint -->
+            <TextView
+                android:id="@+id/tvNoFavourites"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/no_favorites"
+                android:textColor="@color/text_hint"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:layout_marginStart="22dp"
+                android:layout_marginEnd="22dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone"/>
+
+            <!-- ── SUNRISE / SUNSET ── -->
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:layout_marginStart="22dp" android:layout_marginEnd="22dp"
+                android:layout_marginTop="8dp" android:layout_marginBottom="4dp">
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical"
+                    android:background="@drawable/card_bg" android:padding="16dp"
+                    android:layout_marginEnd="6dp">
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp"
+                        android:src="@drawable/ic_sunrise" android:contentDescription="SR"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="SUNRISE" android:textColor="@color/label_color"
+                        android:textSize="10sp" android:layout_marginTop="8dp" android:letterSpacing="0.08"/>
+                    <TextView android:id="@+id/tvHomeSunrise"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="--:--" android:textColor="@color/accent_yellow"
+                        android:textSize="18sp" android:textStyle="bold" android:layout_marginTop="4dp"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical"
+                    android:background="@drawable/card_bg" android:padding="16dp">
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp"
+                        android:src="@drawable/ic_sunset" android:contentDescription="SS"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="SUNSET" android:textColor="@color/label_color"
+                        android:textSize="10sp" android:layout_marginTop="8dp" android:letterSpacing="0.08"/>
+                    <TextView android:id="@+id/tvHomeSunset"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="--:--" android:textColor="@color/accent_orange"
+                        android:textSize="18sp" android:textStyle="bold" android:layout_marginTop="4dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

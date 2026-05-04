@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WeatherScope</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_map">Map</string>
+    <string name="nav_profile">Profile</string>
+    <string name="tap_map">Tap map to get weather</string>
+    <string name="fetching">Fetching weather…</string>
+    <string name="feels_like">Feels like</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="logout">Logout</string>
+    <string name="version">Version 1.0.0</string>
+    <string name="good_morning">Good Morning</string>
+    <string name="good_afternoon">Good Afternoon</string>
+    <string name="good_evening">Good Evening</string>
+    <string name="search_hint">Search city…</string>
+    <string name="favorites">Favourites</string>
+    <string name="forecast_7day">7-Day Forecast</string>
+    <string name="no_favorites">No favourites yet.\nTap ★ on map to save.</string>
+</resources>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/detail_card_bg"
+    android:padding="14dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="6dp">
+        <ImageView
+            android:id="@+id/ivDetailIcon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:contentDescription="icon"
+            tools:src="@drawable/ic_humidity"/>
+        <TextView
+            android:id="@+id/tvDetailLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/label_color"
+            android:textSize="10sp"
+            android:letterSpacing="0.08"
+            android:layout_marginStart="6dp"
+            tools:text="HUMIDITY"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvDetailValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_primary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="72%"/>
+
+    <TextView
+        android:id="@+id/tvDetailSub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_secondary"
+        android:textSize="11sp"
+        android:layout_marginTop="2dp"
+        tools:text="Relative"/>
+</LinearLayout>
